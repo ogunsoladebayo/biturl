@@ -1,0 +1,30 @@
+{
+  "name": "biturl",
+  "version": "1.0.0",
+  "description": "A url shortener api that accepts URLs as a parameter and returns the shortened url as response.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ogunsoladebayo/biturl.git"
+  },
+  "author": "Ogunsola Usman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ogunsoladebayo/biturl/issues"
+  },
+  "homepage": "https://github.com/ogunsoladebayo/biturl#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
