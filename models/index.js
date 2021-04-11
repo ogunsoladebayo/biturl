@@ -32,14 +32,14 @@ Object.keys(db).forEach((modelName) => {
 	if (db[modelName].associate) {
 		db[modelName].associate(db);
 	}
-	// 	db[modelName]
-	// 		.sync()
-	// 		.then((result) => {
-	// 			console.log('synced');
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err);
-	// 		});
+	db[modelName]
+		.sync()
+		.then((result) => {
+			console.log('synced');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 });
 
 db.sequelize = sequelize;
