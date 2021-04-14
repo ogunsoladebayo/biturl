@@ -1,11 +1,11 @@
 const db = require('../models');
 
 // generate random strings of 6 characters
-function generate() {
+const generate = () => {
 	var id;
 
 	// function to generate random string
-	function getId() {
+	const getId = () => {
 		const length = 6;
 		const result = [];
 		const characters =
@@ -19,21 +19,21 @@ function generate() {
 		}
 		// check that the string is unique
 		checkUnique(id);
-	}
+	};
 
 	// function to check if string is not yet in the database
-	async function checkUnique(id) {
+	const checkUnique = async (id) => {
 		const existing = await db.urls.findByPk(id);
 
 		// generate a new string if the string is not unique
 		if (existing) {
 			getId();
 		}
-	}
+	};
 
 	getId();
 	return id;
-}
+};
 
 module.exports = async (link) => {
 	const id = generate();
