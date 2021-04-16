@@ -15,7 +15,7 @@ app.use(
 		graphiql: true
 	})
 );
-app.get('favicon.ico', res.status(200));
+app.get('/favicon.ico', (req, res) => res.status(200));
 
 // mount shortened url resolver
 app.get('/:strpath', resolver);
