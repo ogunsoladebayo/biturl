@@ -9,14 +9,15 @@ const app = express();
 
 // mount graphql
 app.use(
-	'/graphql',
+	'/graphiql',
 	graphqlHTTP({
 		schema: schema,
 		graphiql: true
 	})
 );
+app.get('favicon.ico', res.status(200));
 
-// mount shortened url reolver
+// mount shortened url resolver
 app.get('/:strpath', resolver);
 
 app.listen(4000, () => {
