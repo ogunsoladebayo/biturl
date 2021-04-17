@@ -1,5 +1,2 @@
-DB_NAME=biturl
-DB_USER=
-DB_PASS=
-DB_HOST=localhost
-DOMAIN_URL=http://localhost:4000
+DATABASE_URL=
+DOMAIN_URL=
