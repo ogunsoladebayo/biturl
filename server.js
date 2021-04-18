@@ -20,6 +20,8 @@ app.get('/favicon.ico', (req, res) => res.status(200));
 // mount shortened url resolver
 app.get('/:strpath', resolver);
 
-app.listen(4000, () => {
-	console.log('server running on port 4000...');
+app.listen(process.env.PORT, () => {
+	console.log(`server running on port ${process.env.PORT}...`);
 });
+
+module.exports = app;

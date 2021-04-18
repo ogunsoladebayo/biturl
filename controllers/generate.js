@@ -35,11 +35,8 @@ const generate = () => {
 	return id;
 };
 
-module.exports = async (link) => {
+module.exports = () => {
 	const id = generate();
-
-	// save the url to the db with the string as identifier
-	await db.urls.create({ id, link });
 
 	// return the string
 	return id;

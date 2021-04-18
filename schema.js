@@ -1,20 +1,7 @@
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = require('graphql');
 const generate = require('./controllers/generate');
-const validUrl = require('valid-url');
-
-// URL validation check
-const isValidUrl = (url) => {
-	var pattern = new RegExp(
-		'^(https?:\\/\\/)?' + // protocol
-		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-		'((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-		'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-		'(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-			'(\\#[-a-z\\d_]*)?$',
-		'i'
-	); // fragment locator
-	return !!pattern.test(url);
-};
+const isValidUrl = require('./utils/urlValidator');
+const db = require('./models');
 
 // Root Query
 const RootQuery = new GraphQLObjectType({
@@ -27,9 +14,11 @@ const RootQuery = new GraphQLObjectType({
 				if (!isValidUrl(args.url)) {
 					return 'Not a valid URL';
 				}
-				return generate(args.url).then(
-					(res) => `${process.env.DOMAIN_URL}/${res}`
-				);
+				const id = generate();
+				// save the url to the db with the string as identifier
+				return db.urls
+					.create({ id, link: args.url })
+					.then((res) => `${process.env.DOMAIN_NAME}/${res.id}`);
 			}
 		}
 	}
