@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node server.js",
 		"dev": "nodemon server.js --watch",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "mocha --exit"
 	},
 	"repository": {
 		"type": "git",
@@ -25,11 +25,13 @@
 		"express-graphql": "^0.12.0",
 		"graphql": "^15.5.0",
 		"pg": "^8.5.1",
-		"sequelize": "^6.6.2",
-		"valid-url": "^1.0.9"
+		"sequelize": "^6.6.2"
 	},
 	"devDependencies": {
+		"chai": "^4.3.4",
+		"chai-http": "^4.3.0",
 		"eslint": "^7.24.0",
+		"mocha": "^8.3.2",
 		"nodemon": "^2.0.7"
 	}
 }
